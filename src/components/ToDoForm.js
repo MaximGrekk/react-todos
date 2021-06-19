@@ -7,6 +7,9 @@ const styles = {
     },
     del: {
 
+    },
+    input: {
+        outline: 'none'
     }
 }
 
@@ -31,16 +34,21 @@ export default class toDoForm extends React.Component {
         let newItem = {
             id: Math.random().toString(10).substr(0, 7),
             body: this.state.input,
-          }
+        }
+        if(this.state.input) {
+            console.log(this.state.input)
+            this.setState({
+                input: this.state.input,
+                items: [...this.state.items, newItem],
+            });   
+    
+            this.setState({
+                input: ''
+            }); 
+        }
+        
 
-        this.setState({
-            input: this.state.input,
-            items: [...this.state.items, newItem],
-        });   
-
-        this.setState({
-            input: ''
-        }); 
+        
     }
     onDelete(id) {
         // console.log(this.state.items, id);
@@ -54,8 +62,9 @@ export default class toDoForm extends React.Component {
                 <form onSubmit={this.onSubmit} className="d-flex justify-content-center mt-4">
                     <input type="text" value={this.state.input} onChange={this.onChange}
                     className="border shadow-sm mx-2 p-2" placeholder="Введите заметку..."
+                    style={styles.input}
                     />
-                    <button type="submit" className="btn btn-secondary shadow-sm">Submit</button>
+                    <button type="submit" className="btn btn-secondary shadow-sm">Сохранить</button>
                 </form>
                 <p className="text-center pt-4" style={styles.paragraph}>{this.state.input}</p>
 
