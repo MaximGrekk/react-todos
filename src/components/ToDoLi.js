@@ -12,17 +12,17 @@ const styles = {
         cursor: 'pointer',
         backgroundColor: 'rgba(255, 0, 0, 0.4)',
         color: 'white'
-    }
+    },
+
 }
 
 export default class ToDoLi extends Component {
-    constructor(props) {
-        super(props) // вызывает родительский конструктор
-
-    }
+    // constructor(props) {
+    //     super(props) // вызывает родительский конструктор
+    // }
     render() {
         return (
-            <li className="list-group-item list-group-item-dark text-center">
+            <li className="list-group-item list-group-item-dark text-center" >
                 {this.props.index + 1}: {this.props.item} 
 
                 <button style={styles.deleteItem} className="item-delete" onClick={() => this.props.onDelete(this.props.id)}>

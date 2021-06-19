@@ -23,7 +23,6 @@ export default class toDoForm extends React.Component {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onDelete = this.onDelete.bind(this);
-
     }
     onChange(e) {
         this.setState({input: e.target.value})
@@ -36,7 +35,6 @@ export default class toDoForm extends React.Component {
             body: this.state.input,
         }
         if(this.state.input) {
-            console.log(this.state.input)
             this.setState({
                 input: this.state.input,
                 items: [...this.state.items, newItem],
@@ -51,9 +49,9 @@ export default class toDoForm extends React.Component {
         
     }
     onDelete(id) {
-        // console.log(this.state.items, id);
         this.setState({items: this.state.items.filter((item) => item.id !== id)});  
     }
+
     
 
     render() {
@@ -71,7 +69,7 @@ export default class toDoForm extends React.Component {
                 <ul className="list-group">
                     {this.state.items.map((item, index) => {
                         return (
-                            <ToDoLi key={index} item={item.body} index={index} id={item.id} onDelete={this.onDelete}/>
+                            <ToDoLi key={index} item={item.body} index={index} id={item.id} onDelete={this.onDelete} />
                         )
                     })}
                 </ul>

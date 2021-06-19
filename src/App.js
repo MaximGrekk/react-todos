@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import ToDoForm from './components/ToDoForm'
-import ToDoLi from './components/ToDoLi.js'
 
 const styles = {
   title: {
