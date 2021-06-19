@@ -19,6 +19,8 @@ export default class toDoForm extends React.Component {
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.onDelete = this.onDelete.bind(this);
+
     }
     onChange(e) {
         this.setState({input: e.target.value})
@@ -26,12 +28,24 @@ export default class toDoForm extends React.Component {
     onSubmit(e) {
         e.preventDefault(); // чтобы не обновлялась страница
         
+        let newItem = {
+            id: Math.random().toString(10).substr(0, 7),
+            body: this.state.input,
+          }
+
         this.setState({
             input: this.state.input,
-            items: [...this.state.items, this.state.input]
-        });
-    }
+            items: [...this.state.items, newItem],
+        });   
 
+        this.setState({
+            input: ''
+        }); 
+    }
+    onDelete(id) {
+        // console.log(this.state.items, id);
+        this.setState({items: this.state.items.filter((item) => item.id !== id)});  
+    }
     
 
     render() {
@@ -48,7 +62,7 @@ export default class toDoForm extends React.Component {
                 <ul className="list-group">
                     {this.state.items.map((item, index) => {
                         return (
-                            <ToDoLi item={item} index={index} />
+                            <ToDoLi key={index} item={item.body} index={index} id={item.id} onDelete={this.onDelete}/>
                         )
                     })}
                 </ul>
