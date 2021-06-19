@@ -3,7 +3,10 @@ import React, { Component } from 'react'
 const styles = {
     deleteItem: {
         marginLeft: '25px',
-        padding: '0px 7px 3px',
+        // padding: '0px 7px 3px',
+        width: '35px',
+        height: '35px',
+        textAlign: 'center',
         border: '1px solid silver',
         borderRadius: '50%',
         cursor: 'pointer',
@@ -22,9 +25,9 @@ export default class ToDoLi extends Component {
             <li className="list-group-item list-group-item-dark text-center">
                 {this.props.index + 1}: {this.props.item} 
 
-                <span style={styles.deleteItem} className="item-delete" onClick={() => this.props.onDelete(this.props.id)}>
+                <button style={styles.deleteItem} className="item-delete" onClick={() => this.props.onDelete(this.props.id)}>
                      &times;
-                </span>
+                </button>
 
             </li>
         )
