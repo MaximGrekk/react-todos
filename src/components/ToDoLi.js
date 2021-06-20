@@ -11,7 +11,9 @@ const styles = {
         borderRadius: '50%',
         cursor: 'pointer',
         backgroundColor: 'rgba(255, 0, 0, 0.4)',
-        color: 'white'
+        color: 'white',
+        position: 'float',
+        right: '50px'
     },
 
 }
